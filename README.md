@@ -133,4 +133,9 @@ python main.py
 
 ## Interpreting the Outputs
 
+After a successful run, navigate to the `reports/` folder. The most important files for schools and stakeholders are:
 
+1. **`risk_scores.csv`**: A ready-to-use dashboard file. It lists every student in the test set alongside their predicted Risk Score (between 0.0 and 1.0) and translates this into a categorical Risk Level (🟢 Low, 🟡 Medium, 🔴 High).
+2. **`evaluation_report.txt`**: A detailed breakdown of how each model performed, including Stratified 5-Fold Cross-Validation metrics and the final tuned classification report.
+3. **`09_feature_importance.png`**: A bar chart visualizing the Top 10 factors that influence dropout risk (e.g., GPA, Stress Index, Attendance Rate). This provides *explainability* for why the model makes its decisions. 
+4. **`02` to `07` image files**: Visual evidence of the pipeline's analysis (Correlation heatmaps, ROC curves, Confusion matrices).

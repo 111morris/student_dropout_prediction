@@ -55,7 +55,7 @@ models/*
 !models/.gitkeep
 
 # Ignore generated evaluation reports, charts, and dashboards
-reports/*
+# reports/*
 !reports/.gitkeep
 
 # Ignore configuration or secret files if any

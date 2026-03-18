@@ -1,0 +1,44 @@
+============================================================
+STUDENT DROPOUT RISK PREDICTION — EVALUATION REPORT
+============================================================
+
+Baseline (Majority Class) Accuracy: 0.7645
+
+------------------------------------------------------------
+CROSS-VALIDATION RESULTS (Stratified 5-Fold)
+------------------------------------------------------------
+Model                       Accuracy    ROC-AUC     Recall
+-------------------------------------------------------
+Logistic Regression       0.7411±0.0067 0.8211±0.0097 0.7525±0.0316
+Random Forest             0.7993±0.0055 0.8053±0.0077 0.3208±0.0179
+Gradient Boosting         0.7949±0.0035 0.7943±0.0084 0.4020±0.0166
+XGBoost                   0.7580±0.0035 0.7936±0.0094 0.6367±0.0271
+
+------------------------------------------------------------
+TEST SET RESULTS
+------------------------------------------------------------
+Model                         Acc    Prec     Rec      F1     AUC  Beat BL
+--------------------------------------------------------------------
+Logistic Regression        0.7430  0.4717  0.7601  0.5821  0.8201       No
+Random Forest              0.8015  0.6697  0.3100  0.4238  0.8040      Yes
+Gradient Boosting          0.8010  0.6159  0.4119  0.4936  0.8052      Yes
+XGBoost                    0.7700  0.5089  0.6709  0.5788  0.7991      Yes
+
+★ Best Model: Logistic Regression
+  ROC-AUC: 0.8201
+  Optimal Threshold: 0.371
+  Tuned Recall: 0.8514
+  Tuned Precision: 0.3943
+
+------------------------------------------------------------
+CLASSIFICATION REPORT — Logistic Regression
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+    Retained       0.91      0.74      0.81      1529
+     Dropout       0.47      0.76      0.58       471
+
+    accuracy                           0.74      2000
+   macro avg       0.69      0.75      0.70      2000
+weighted avg       0.81      0.74      0.76      2000
+

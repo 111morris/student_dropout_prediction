@@ -139,3 +139,16 @@ After a successful run, navigate to the `reports/` folder. The most important fi
 2. **`evaluation_report.txt`**: A detailed breakdown of how each model performed, including Stratified 5-Fold Cross-Validation metrics and the final tuned classification report.
 3. **`09_feature_importance.png`**: A bar chart visualizing the Top 10 factors that influence dropout risk (e.g., GPA, Stress Index, Attendance Rate). This provides *explainability* for why the model makes its decisions. 
 4. **`02` to `07` image files**: Visual evidence of the pipeline's analysis (Correlation heatmaps, ROC curves, Confusion matrices).
+
+---
+
+## Future Enhancements & Proposed Features
+
+To further improve the utility and scale of this Early Warning System, the following features could be added in the future:
+
+1. **Interactive Web Dashboard:** Build a user-friendly frontend (using Streamlit, React, or Vue) for teachers and school administrators to upload data, run predictions, and visualize risk factors without touching the command line.
+2. **Database Integration & Data Warehousing:** Transition from static CSV files to a robust database (e.g., PostgreSQL, MySQL) to securely store historical records, prediction logs, and track student risk evolution over time.
+3. **Automated ML Pipelines (MLOps):** Integrate orchestration tools like MLflow, Apache Airflow, or Prefect to automate model retraining and track experiments as new student data becomes available each semester.
+4. **Real-Time API Deployment:** Containerize the best-performing model with Docker and deploy it as a REST FastAPI endpoint, allowing seamless integration with existing School Information Systems (SIS).
+5. **Advanced NLP for Qualitative Data:** If schools collect teacher comments or counseling notes, integrate Natural Language Processing techniques to extract sentiment and thematic features, enriching the predictive dataset.
+6. **Individualized Actionable Interventions:** Enhance the explainable AI (SHAP) implementation to automatically generate personalized intervention recommendations for each at-risk student based on their top contributing risk factors.

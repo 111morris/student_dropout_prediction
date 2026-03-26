@@ -79,6 +79,8 @@ def check_multicollinearity(df, threshold=None):
     Check for highly correlated numeric features.
     If correlation > threshold, recommend dropping one.
     Returns list of columns to drop.
+    check with threshold > 0.90 to prevent data leakage
+    that is removing duplicate information between features. 
     """
     if threshold is None:
         threshold = CORRELATION_THRESHOLD

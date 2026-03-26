@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────
+# Docker Compose — Student Dropout EWS
+# ─────────────────────────────────────────────────────────────
+# Run:  docker-compose up --build
+# Stop: docker-compose down
+# ─────────────────────────────────────────────────────────────
+
+version: "3.9"
+
+services:
+  # ── FastAPI Backend ──────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ews-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist SQLite database across restarts
+      - ./data/db:/app/data/db
+      # Mount model files (read-only)
+      - ./models:/app/models:ro
+    environment:
+      - DATABASE_URL=sqlite:///./data/db/student_ews.db
+      - MODEL_PATH=/app/models/best_model.joblib
+      - SCALER_PATH=/app/models/scaler.joblib
+      - LOG_LEVEL=INFO
+      - CORS_ORIGINS=http://localhost:8501,http://localhost:3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── Streamlit Dashboard ─────────────────────────────────
+  dashboard:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    container_name: ews-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://backend:8000/api/v1
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

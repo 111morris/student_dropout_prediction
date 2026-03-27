@@ -46,9 +46,11 @@ venv.bak/
 .DS_Store
 
 # Project Specific Ignored Folders
-# Ignore generated processed datasets (keep raw data)
+# Ignore all data
 data/processed/*
 !data/processed/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
 
 # Ignore serialized trained models and scalers
 models/*
@@ -57,6 +59,19 @@ models/*
 # Ignore generated evaluation reports, charts, and dashboards
 reports/*
 !reports/.gitkeep
+
+# Ignore SQLite databases
+*.db
+*.sqlite
+
+# Ignore Log files
+*.log
+
+# Ignore data/report formats globally (optional but safe)
+*.csv
+*.xlsx
+*.pdf
+*.zip
 
 # Ignore configuration or secret files if any
 .env
